@@ -21,7 +21,7 @@ require 'iconv'
 class AuthSourceLdap < AuthSource 
   validates_presence_of :host, :port, :attr_login
   validates_length_of :name, :host, :account_password, :maximum => 60, :allow_nil => true
-  validates_length_of :account, :base_dn, :maximum => 255, :allow_nil => true
+  validates_length_of :account, :base_dn, :group_base_dn, :maximum => 255, :allow_nil => true
   validates_length_of :attr_login, :attr_firstname, :attr_lastname, :attr_mail, :maximum => 30, :allow_nil => true
   validates_numericality_of :port, :only_integer => true
   
@@ -30,17 +30,42 @@ class AuthSourceLdap < AuthSource
   def after_initialize
     self.port = 389 if self.port == 0
   end
-  
+
   def authenticate(login, password)
     return nil if login.blank? || password.blank?
     attrs = get_user_dn(login)
     
     if attrs && attrs[:dn] && authenticate_dn(attrs[:dn], password)
       logger.debug "Authentication successful for '#{login}'" if logger && logger.debug?
+
+      # group creation fails with on the fly registration, so check if user exists
+      if (user = User.find_by_login(login))
+        Thread.start do
+          group_create(user)
+        end
+      end
+
       return attrs.except(:dn)
     end
   rescue  Net::LDAP::LdapError => text
     raise "LdapError: " + text
+  end
+
+  def group_create(user)
+      if self.group_base_dn.present?
+        ldap_con = initialize_ldap_con(self.account, self.account_password)
+        attrs = get_user_dn(user.login)
+
+        # Search for ldap groups that the user is in
+        ldap_con.search( :base => self.group_base_dn,
+                         :filter => Net::LDAP::Filter.eq("memberUid", user.login),
+                         :attributes => [ "cn" ]) do |entry|
+
+          # lastname of group is limited to 30 chars
+          group = Group.find_or_create_by_lastname(entry.cn.first[0,30])
+          group.users << user unless group.user_ids.include?(user.id)
+        end
+      end
   end
 
   # test the connection to the LDAP
