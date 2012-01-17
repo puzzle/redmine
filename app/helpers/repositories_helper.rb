@@ -194,7 +194,7 @@ module RepositoriesHelper
   end
 
   def git_field_tags(form, repository)
-  	repository.url ||= "/var/www/vhosts/redmine.puzzle.ch/repositories/[git-server].puzzle.ch/[git_sub_directory]/[git_repo].git/.git"
+    repository.url = "/var/www/vhosts/redmine.puzzle.ch/repositories/[git-server].puzzle.ch/[git_sub_directory]/[git_repo].git/.git" if repository.url.blank?
     content_tag('p', form.text_field(
                        :url, :label => l(:field_path_to_repository),
                        :size => 60, :required => true,
