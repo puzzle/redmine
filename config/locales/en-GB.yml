@@ -983,7 +983,7 @@ en-GB:
   notice_issue_successful_create: Issue %{id} created.
   label_between: between
   label_diff: diff
-  text_git_repository_note: Repository is bare and local (e.g. /gitrepo, c:\gitrepo)
+  text_git_repository_note: "The path must be as follows: /var/www/vhosts/redmine.puzzle.ch/repositories/[git-server].puzzle.ch/[git_sub_directory]/[git_repo].git/.git (e.g. /var/www/vhosts/redmine.puzzle.ch/repositories/git-zc2.puzzle.ch/edai_zc2/zac2.git/.git)"
   description_query_sort_criteria_direction: Sort direction
   description_project_scope: Search scope
   description_filter: Filter

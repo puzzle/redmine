@@ -997,7 +997,7 @@ de:
   label_between: between
   setting_issue_group_assignment: Allow issue assignment to groups
   label_diff: diff
-  text_git_repository_note: Repository is bare and local (e.g. /gitrepo, c:\gitrepo)
+  text_git_repository_note: "Der Pfad muss folgendermassen aussehen: /var/www/vhosts/redmine.puzzle.ch/repositories/[git-server].puzzle.ch/[git_sub_directory]/[git_repo].git/.git (e.g. /var/www/vhosts/redmine.puzzle.ch/repositories/git-zc2.puzzle.ch/edai_zc2/zac2.git/.git)"
 
   description_filter: Filter
   description_search: Suchfeld
