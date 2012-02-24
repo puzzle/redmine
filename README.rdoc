@@ -3,3 +3,10 @@
 Redmine is a flexible project management web application written using Ruby on Rails framework.
 
 More details can be found in the doc directory or on the official website http://www.redmine.org
+
+== Puzzle WEBDAV version
+
+In this version of the source the original code was patched with the following plugins:
+
+* https://github.com/amartel/redmine_webdav
+* http://projects.andriylesyuk.com/projects/scm-creator
