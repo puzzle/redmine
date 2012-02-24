@@ -1,0 +1,19 @@
+# Strings en castellano
+es:
+  webdav: WebDAV
+  permission_webdav_settings: Gestionar WEBDAV
+  permission_webdav_access: Usar WEBDAV
+  subversion_only_info: "Desabilitar el primer nivel de directorios del �rbol (ficheros/documentos/repositorio) y gestionar �nicamente ficheros del repositorio"
+  subversion_enabled_info: "�nicamente si tienes un repositorio subversion local en este servidor"
+  field_files_enabled: "Ficheros"
+  field_documents_enabled: "Documentos"
+  field_subversion_enabled: "Repositorio"
+  field_subversion_only: "S�lo repositorio"
+  field_files_label: "Carpeta"
+  field_documents_label: "Carpeta"
+  field_subversion_label: "Carpeta"
+  field_macosx_write: "MacOSX escribe"
+  macosx_write_info: "Permite que MacOSX escriba utilizando WEBDAV"
+  files_label: "ficheros"
+  documents_label: "documentos"
+  subversion_label: "repositorio"
