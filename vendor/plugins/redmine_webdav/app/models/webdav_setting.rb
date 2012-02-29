@@ -7,7 +7,7 @@ class WebdavSetting < ActiveRecord::Base
       setting = WebdavSetting.new
       setting.project_id = pj_id
       setting.files_enabled = true
-      setting.documents_enabled = false
+      setting.documents_enabled = true
       setting.subversion_enabled = true
       setting.subversion_only = false
       setting.files_label = l(:files_label)
