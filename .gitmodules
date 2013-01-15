@@ -1,0 +1,9 @@
+[submodule "vendor/plugins/http_auth"]
+	path = vendor/plugins/http_auth
+	url = https://github.com/puzzle/redmine_http_auth.git
+[submodule "vendor/plugins/webdav"]
+	path = vendor/plugins/webdav
+	url = https://github.com/puzzle/redmine_webdav.git
+[submodule "vendor/plugins/scm_creator"]
+	path = vendor/plugins/scm_creator
+	url = https://github.com/puzzle/redmine_scm_creator.git
